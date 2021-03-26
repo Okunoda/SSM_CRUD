@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace:命名空间，填写映射当前的Mapper接口-->
+<mapper namespace="com.southSong.DAO.EmployeeDao">
+    <resultMap id="employee" type="com.southSong.pojo.Employee">
+        <id property="id" column="employee_id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="email" column="email"/>
+    </resultMap>
+
+    <select id="getEmpById" resultMap="employee" >
+        select * from employees
+        <where>
+            <if test=""
+        </where>
+    </select>
+
+</mapper>
