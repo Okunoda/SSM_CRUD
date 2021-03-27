@@ -15,7 +15,9 @@
     <select id="getEmpById" resultMap="employee" >
         select * from employees
         <where>
-            <if test=""
+            <if test="id!=null or id!=''">
+                employee_id=#{id}
+            </if>
         </where>
     </select>
 

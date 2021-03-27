@@ -6,6 +6,10 @@ public class Employee {
     private String lastName;
     private String email;
 
+    public Employee() {
+
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
