@@ -1,38 +1,64 @@
 package com.southSong.pojo;
 
+import java.util.Date;
+
 public class Employee {
-    private Integer id;
+    private Integer employeeId;
+
     private String firstName;
+
     private String lastName;
+
     private String email;
 
-    public Employee() {
+    private String phoneNumber;
 
-    }
+    private String jobId;
+
+    private Double salary;
+
+    private Double commissionPct;
+
+    private Integer managerId;
+
+    private Integer departmentId;
+
+    private Date hiredate;
+
+    private Department department;
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "employeeId=" + employeeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", jobId='" + jobId + '\'' +
+                ", salary=" + salary +
+                ", commissionPct=" + commissionPct +
+                ", managerId=" + managerId +
+                ", departmentId=" + departmentId +
+                ", hiredate=" + hiredate +
+                ", department=" + department +
                 '}';
     }
 
-    public Employee(Integer id, String firstName, String lastName, String email) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public Department getDepartment() {
+        return department;
     }
 
-    public Integer getId() {
-        return id;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getFirstName() {
@@ -57,5 +83,61 @@ public class Employee {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
+    }
+
+    public Double getCommissionPct() {
+        return commissionPct;
+    }
+
+    public void setCommissionPct(Double commissionPct) {
+        this.commissionPct = commissionPct;
+    }
+
+    public Integer getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(Integer managerId) {
+        this.managerId = managerId;
+    }
+
+    public Integer getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Date getHiredate() {
+        return hiredate;
+    }
+
+    public void setHiredate(Date hiredate) {
+        this.hiredate = hiredate;
     }
 }

@@ -2,12 +2,13 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="static/js/jquery-1.12.4.min.js"></script>
-    <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <jsp:include page="WEB-INF/comment/head.jsp"/>
 
 </head>
 <body>
-<button class="btn btn-success" value="test">test</button>
+<button class="btn btn-success" >test</button>
+<jsp:forward page="emp">
+
+</jsp:forward>
 </body>
 </html>

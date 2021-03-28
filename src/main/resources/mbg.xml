@@ -1,0 +1,29 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="simple" targetRuntime="MyBatis3Simple">
+        <commentGenerator>
+<!--            取消生成注释-->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/myemployees"
+                        userId="root"
+                        password="123456"/>
+
+
+        <!--配置javaBean-->
+        <javaModelGenerator targetPackage="com.southSong.pojo"
+                            targetProject="./src/main/java"/>
+<!--        指定sql映射文件生成的位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="./src/main/resources"/>
+<!--指定DAO接口生成的位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.southSong.DAO" targetProject="./src/main/java"/>
+<!--指定每个表的生成策略-->
+<!--        tableName 是指逆向生成哪张表，domainObjectName 指定这张表对应的javaBean-->
+        <table tableName="employees" domainObjectName="Employee"/>
+        <table tableName="departments" domainObjectName="Department"/>
+    </context>
+</generatorConfiguration>

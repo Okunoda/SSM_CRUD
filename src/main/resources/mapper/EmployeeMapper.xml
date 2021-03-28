@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.southSong.DAO.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.southSong.pojo.Employee">
+    <id column="employee_id" jdbcType="INTEGER" property="employeeId" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="salary" jdbcType="DOUBLE" property="salary" />
+    <result column="commission_pct" jdbcType="DOUBLE" property="commissionPct" />
+    <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="hiredate" jdbcType="TIMESTAMP" property="hiredate" />
+  </resultMap>
+  <resultMap id="BaseResultMapWithDept" type="com.southSong.pojo.Employee">
+    <id column="employee_id" jdbcType="INTEGER" property="employeeId" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="job_id" jdbcType="VARCHAR" property="jobId" />
+    <result column="salary" jdbcType="DOUBLE" property="salary" />
+    <result column="commission_pct" jdbcType="DOUBLE" property="commissionPct" />
+    <result column="manager_id" jdbcType="INTEGER" property="managerId" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="hiredate" jdbcType="TIMESTAMP" property="hiredate" />
+    <association property="department" javaType="com.southSong.pojo.Department">
+      <id property="departmentId" column="department_id"/>
+      <result property="departmentName" column="department_id"/>
+      <result property="managerId" column="manager_id"/>
+      <result property="locationId" column="location_id"/>
+    </association>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from employees
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.southSong.pojo.Employee">
+    insert into employees (employee_id, first_name, last_name, 
+      email, phone_number, job_id, 
+      salary, commission_pct, manager_id, 
+      department_id, hiredate)
+    values (#{employeeId,jdbcType=INTEGER}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{jobId,jdbcType=VARCHAR}, 
+      #{salary,jdbcType=DOUBLE}, #{commissionPct,jdbcType=DOUBLE}, #{managerId,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=INTEGER}, #{hiredate,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.southSong.pojo.Employee">
+    update employees
+    set first_name = #{firstName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      job_id = #{jobId,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=DOUBLE},
+      commission_pct = #{commissionPct,jdbcType=DOUBLE},
+      manager_id = #{managerId,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      hiredate = #{hiredate,jdbcType=TIMESTAMP}
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select employee_id, first_name, last_name, email, phone_number, job_id, salary, commission_pct, 
+    manager_id, department_id, hiredate
+    from employees
+    where employee_id = #{employeeId,jdbcType=INTEGER}
+  </select>
+<!--  Employee selectByPrimaryKey(Integer employeeId);
+    List<Employee> selectAll();
+-->
+  <select id="selectByPrimaryKeyWithDept" resultMap="BaseResultMapWithDept">
+    SELECT e.employee_id, e.first_name, e.last_name, e.email, e.phone_number, e.job_id, e.salary, e.commission_pct,
+           e.manager_id, d.department_name, e.hiredate
+    FROM employees e
+    LEFT JOIN departments d
+    ON e.department_id = d.department_id
+    where e.employee_id = #{employeeId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select employee_id, first_name, last_name, email, phone_number, job_id, salary, commission_pct, 
+    manager_id, department_id, hiredate
+    from employees
+  </select>
+</mapper>
