@@ -2,12 +2,20 @@
 <html>
 <head>
     <title>Title</title>
-    <link href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="static/js/jquery-1.12.4.min.js"></script>
-    <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <jsp:include page="WEB-INF/comment/head.jsp"/>
 
 </head>
 <body>
-<button class="btn btn-success" value="test">test</button>
+<a href="emps/1" > 查看职员列表 </a>
+<button type="button"  class="demo">file in load</button>
+<script type="text/javascript">
+    $(function(){
+        $(".demo").click(function(){
+            alert("hello file");
+        })
+    })
+</script>
 </body>
+
 </html>

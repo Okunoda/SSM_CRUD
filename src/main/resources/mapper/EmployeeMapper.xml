@@ -28,7 +28,7 @@
     <result column="hiredate" jdbcType="TIMESTAMP" property="hiredate" />
     <association property="department" javaType="com.southSong.pojo.Department">
       <id property="departmentId" column="department_id"/>
-      <result property="departmentName" column="department_id"/>
+      <result property="departmentName" column="department_name"/>
       <result property="managerId" column="manager_id"/>
       <result property="locationId" column="location_id"/>
     </association>
@@ -77,6 +77,12 @@
     LEFT JOIN departments d
     ON e.department_id = d.department_id
     where e.employee_id = #{employeeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAllWithDept" resultMap="BaseResultMapWithDept">
+    SELECT *
+    FROM employees e
+    LEFT JOIN departments d
+    ON e.department_id = d.department_id
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap">
