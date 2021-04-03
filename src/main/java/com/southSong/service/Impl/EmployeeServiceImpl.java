@@ -14,7 +14,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     EmployeeMapper employeeMapper ;
 
     @Override
+    public void saveEmp(Employee employee){
+        employeeMapper.insert(employee);
+    }
+
+    @Override
     public List<Employee> getEmpList() {
         return employeeMapper.selectAllWithDept();
+    }
+
+    @Override
+    public boolean selectName(String name) {
+        return employeeMapper.selectName(name)!=0;
     }
 }

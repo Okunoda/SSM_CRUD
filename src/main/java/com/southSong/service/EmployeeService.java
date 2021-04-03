@@ -8,6 +8,9 @@ import java.util.List;
 @Service
 public interface EmployeeService {
 
+    public void saveEmp(Employee employee);
+
     public List<Employee> getEmpList();
 
+    boolean selectName(String name);
 }

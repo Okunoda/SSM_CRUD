@@ -1,5 +1,7 @@
 package com.southSong.pojo;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 public class Employee {
@@ -7,8 +9,12 @@ public class Employee {
 
     private String firstName;
 
+    @Pattern(regexp = "(^[a-z0-9_-]{3,16}$)|(^[\\u2E80-\\u9FFF]+$)",
+                message = "用户名必须是汉字、字母、数字")
     private String lastName;
 
+    @Email(regexp = "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$",
+            message = "邮箱不合法")
     private String email;
 
     private String phoneNumber;

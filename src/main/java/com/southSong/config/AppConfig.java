@@ -137,7 +137,6 @@ public class AppConfig {
     @Bean
     public PageInterceptor pageInterceptor(){
         PageInterceptor pageInterceptor = new PageInterceptor();
-//        pageInterceptor.setProperties()
         return pageInterceptor;
     }
 

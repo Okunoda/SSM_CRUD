@@ -84,6 +84,11 @@
     LEFT JOIN departments d
     ON e.department_id = d.department_id
   </select>
+<select id="selectName" resultType="java.lang.Long">
+  select count(last_name)
+from employees
+where last_name=#{name}
+</select>
 
   <select id="selectAll" resultMap="BaseResultMap">
     select employee_id, first_name, last_name, email, phone_number, job_id, salary, commission_pct, 
